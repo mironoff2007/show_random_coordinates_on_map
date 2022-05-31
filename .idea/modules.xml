@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Show_random_coordinates_on_map.iml" filepath="$PROJECT_DIR$/.idea/modules/Show_random_coordinates_on_map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Show_random_coordinates_on_map.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Show_random_coordinates_on_map.app.iml" />
+    </modules>
+  </component>
+</project>
