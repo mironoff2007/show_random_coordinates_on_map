@@ -20,19 +20,15 @@ class CoordinatesGeneratorTest() {
             clearMuteList.add(generator.generateCoordinates())
         }
 
-        var simpleBoolean: Boolean
+        var simpleBoolean = false
 
-        val vDiapazone = clearMuteList.forEach {
-            if (it.first in -90.0000..90.0001 || it.second in -180.0000..180.0001)
+        clearMuteList.forEach {
+            if (it.first in -90.0..90.0 && it.second in -180.0..180.0)
                 simpleBoolean = true
-        }
-        val neVDiapazone = clearMuteList.forEach {
-            if (it.first !in -90.0000..90.0001 || it.second !in -180.0000..180.0001)
-                simpleBoolean = false
-        }
-        assertEquals(vDiapazone, neVDiapazone)
-    }
 
+            assert(simpleBoolean)
+        }
+    }
 }
 
 
