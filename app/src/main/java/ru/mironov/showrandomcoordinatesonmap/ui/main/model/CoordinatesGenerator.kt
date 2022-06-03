@@ -28,10 +28,10 @@ class CoordinatesGenerator {
     fun getCoordinatesWithTimer(
         duration: Long,
         delay: Long,
-        coordinates: MutableLiveData<MutableList<Pair<Double, Double>>>,
+        coordinates: MutableLiveData<List<Pair<Double, Double>>>,
     ) {
         val newList = mutableListOf<Pair<Double, Double>>()
-            for (i in 0L..duration step 200) {
+            for (i in delay..duration step delay) {
                 newList.add(generateCoordinates())
                 Thread.sleep(delay)
                 coordinates.postValue(newList)

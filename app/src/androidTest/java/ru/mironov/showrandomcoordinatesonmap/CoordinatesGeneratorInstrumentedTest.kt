@@ -1,5 +1,6 @@
 package ru.mironov.showrandomcoordinatesonmap
 
+import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -22,18 +23,19 @@ class CoordinatesGeneratorInstrumentedTest {
 
     @Test
     fun testCoordinatesTimerGenerator() {
-        //нужно сделать, чтобы этот тост проходился
-        //для начала в одном потоке, позже сделаем асинхронно
-        val coordinates = MutableLiveData<MutableList<Pair<Double, Double>>>()
+        val coordinates = MutableLiveData<List<Pair<Double, Double>>>()
 
-        val duration = 60000L
+        val duration = 2000L
+        val delay = 100L
         val startTime = System.currentTimeMillis()
-        val delay = 200L
-        val endTime = System.currentTimeMillis()
+
         val count = (duration/delay).toInt()
 
         generator.getCoordinatesWithTimer(duration, delay, coordinates)
+        val endTime = System.currentTimeMillis()
+        val testTime = endTime - startTime
 
-        assert(coordinates.value?.size == count)
+        Log.d("Test_tag", "test time - $testTime")
+        assert(coordinates.value?.size == count && testTime > duration)
     }
 }
