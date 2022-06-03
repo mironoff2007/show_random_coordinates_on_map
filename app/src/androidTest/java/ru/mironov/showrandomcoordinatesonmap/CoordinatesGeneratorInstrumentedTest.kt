@@ -25,13 +25,14 @@ class CoordinatesGeneratorInstrumentedTest {
     @Test
     fun testCoordinatesTimerGenerator() {
         //нужно сделать, чтобы этот тост проходился
+        //для начала в одном потоке, позже сделаем асинхронно
         val coordinates = MutableLiveData<List<Pair<Double, Double>>>()
 
         val duration = 5000L
         val delay = 1000L
         val count = (duration/delay).toInt()
 
-        generator.getCoordinatesWithTimer(delay , duration, coordinates)
+        generator.getCoordinatesWithTimer(delay, duration, coordinates)
 
         assert(coordinates.value?.size == count)
     }
