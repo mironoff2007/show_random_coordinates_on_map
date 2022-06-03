@@ -1,13 +1,9 @@
 package ru.mironov.showrandomcoordinatesonmap.ui.main.model
 
-import android.os.Handler
-import android.os.Looper
-import android.os.SystemClock
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.delay
 import java.util.*
-import kotlin.concurrent.thread
 import kotlin.random.Random
-import kotlin.time.Duration.Companion.seconds
 
 class CoordinatesGenerator {
 
@@ -25,7 +21,8 @@ class CoordinatesGenerator {
         return Pair(lat, lon)
     }
 
-    fun getCoordinatesWithTimer(
+    // suspend означает, что функцию надо вызывать из корутины
+    suspend fun getCoordinatesWithTimer(
         duration: Long,
         delay: Long,
         coordinates: MutableLiveData<List<Pair<Double, Double>>>,
@@ -33,10 +30,9 @@ class CoordinatesGenerator {
         val newList = mutableListOf<Pair<Double, Double>>()
             for (i in delay..duration step delay) {
                 newList.add(generateCoordinates())
-                Thread.sleep(delay)
+                delay(delay)
                 coordinates.postValue(newList)
             }
-
     }
 }
 

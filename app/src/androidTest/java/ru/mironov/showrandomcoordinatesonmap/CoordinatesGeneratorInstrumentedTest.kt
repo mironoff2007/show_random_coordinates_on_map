@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,7 +32,13 @@ class CoordinatesGeneratorInstrumentedTest {
 
         val count = (duration/delay).toInt()
 
-        generator.getCoordinatesWithTimer(duration, delay, coordinates)
+        //Запускает корутину, блокируя текущий поток. По сути в том же потоке.
+        //Асинхронный код выпалняем синхронно
+        //Нужно для тестов, вне тестов runBlocking лучше не использовать
+        runBlocking {
+            generator.getCoordinatesWithTimer(duration, delay, coordinates)
+        }
+
         val endTime = System.currentTimeMillis()
         val testTime = endTime - startTime
 
