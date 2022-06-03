@@ -1,5 +1,6 @@
 package ru.mironov.showrandomcoordinatesonmap.ui.main.model
 
+import androidx.lifecycle.MutableLiveData
 import java.util.*
 import kotlin.random.Random
 
@@ -17,6 +18,16 @@ class CoordinatesGenerator {
         val lon = randLonValueRounded.toDouble()
         //Возвращает пару широты/долготы в формате (0.0000, 0.0000)
         return Pair(lat, lon)
+    }
+
+    fun getCoordinatesWithTimer(
+        delay: Long,
+        duration: Long,
+        coordinates: MutableLiveData<List<Pair<Double, Double>>>
+    ) {
+        //тут реализовать генератор c циклом
+
+        coordinates.postValue(listOf(generateCoordinates()))
     }
 
 }
