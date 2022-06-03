@@ -3,8 +3,6 @@ package ru.mironov.showrandomcoordinatesonmap
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,13 +24,15 @@ class CoordinatesGeneratorInstrumentedTest {
     fun testCoordinatesTimerGenerator() {
         //нужно сделать, чтобы этот тост проходился
         //для начала в одном потоке, позже сделаем асинхронно
-        val coordinates = MutableLiveData<List<Pair<Double, Double>>>()
+        val coordinates = MutableLiveData<MutableList<Pair<Double, Double>>>()
 
-        val duration = 5000L
-        val delay = 1000L
+        val duration = 60000L
+        val startTime = System.currentTimeMillis()
+        val delay = 200L
+        val endTime = System.currentTimeMillis()
         val count = (duration/delay).toInt()
 
-        generator.getCoordinatesWithTimer(delay, duration, coordinates)
+        generator.getCoordinatesWithTimer(duration, delay, coordinates)
 
         assert(coordinates.value?.size == count)
     }

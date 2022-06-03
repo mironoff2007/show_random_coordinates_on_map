@@ -1,8 +1,13 @@
 package ru.mironov.showrandomcoordinatesonmap.ui.main.model
 
+import android.os.Handler
+import android.os.Looper
+import android.os.SystemClock
 import androidx.lifecycle.MutableLiveData
 import java.util.*
+import kotlin.concurrent.thread
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.seconds
 
 class CoordinatesGenerator {
 
@@ -21,14 +26,19 @@ class CoordinatesGenerator {
     }
 
     fun getCoordinatesWithTimer(
-        delay: Long,
         duration: Long,
-        coordinates: MutableLiveData<List<Pair<Double, Double>>>
+        delay: Long,
+        coordinates: MutableLiveData<MutableList<Pair<Double, Double>>>,
     ) {
-        //тут реализовать генератор c циклом
+        val newList = mutableListOf<Pair<Double, Double>>()
+            for (i in 0L..duration step 200) {
+                newList.add(generateCoordinates())
+                Thread.sleep(delay)
+                coordinates.postValue(newList)
+            }
 
-        coordinates.postValue(listOf(generateCoordinates()))
     }
-
 }
+
+
 
