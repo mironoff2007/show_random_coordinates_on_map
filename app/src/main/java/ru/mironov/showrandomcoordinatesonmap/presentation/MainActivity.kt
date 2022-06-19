@@ -1,10 +1,10 @@
-package ru.mironov.showrandomcoordinatesonmap
+package ru.mironov.showrandomcoordinatesonmap.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.mironov.showrandomcoordinatesonmap.ui.main.GenService
-import ru.mironov.showrandomcoordinatesonmap.ui.main.MainFragment
+import ru.mironov.showrandomcoordinatesonmap.R
+import ru.mironov.showrandomcoordinatesonmap.services.GenService
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
-            startGen()
+//            startGen()
         }
     }
 

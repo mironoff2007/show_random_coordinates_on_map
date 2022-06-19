@@ -1,4 +1,4 @@
-package ru.mironov.showrandomcoordinatesonmap.ui.main.model
+package ru.mironov.showrandomcoordinatesonmap.data
 
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.delay

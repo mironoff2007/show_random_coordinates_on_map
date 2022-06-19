@@ -1,7 +1,7 @@
 package ru.mironov.showrandomcoordinatesonmap
 
 import org.junit.Test
-import ru.mironov.showrandomcoordinatesonmap.ui.main.model.CoordinatesGenerator
+import ru.mironov.showrandomcoordinatesonmap.data.CoordinatesGenerator
 
 
 class CoordinatesGeneratorTest() {

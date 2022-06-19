@@ -1,4 +1,4 @@
-package ru.mironov.showrandomcoordinatesonmap.ui.main
+package ru.mironov.showrandomcoordinatesonmap.services
 
 import android.app.Service
 import android.content.Intent
@@ -6,7 +6,7 @@ import android.os.IBinder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.mironov.showrandomcoordinatesonmap.ui.main.model.CoordinatesGenerator
+import ru.mironov.showrandomcoordinatesonmap.data.CoordinatesGenerator
 
 class GenService : Service() {
 
