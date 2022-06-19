@@ -8,7 +8,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.mironov.showrandomcoordinatesonmap.ui.main.model.CoordinatesGenerator
+import ru.mironov.showrandomcoordinatesonmap.data.CoordinatesGenerator
 
 
 @RunWith(AndroidJUnit4::class)
